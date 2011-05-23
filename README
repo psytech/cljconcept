@@ -17,7 +17,7 @@ is only done at the very first call.
 
 ## Usage
 
-To add concept checking to a function just use the with-concept macro.
+To add concept checking to a function just use the with-concepts macro.
 
 Example:
 
@@ -29,7 +29,7 @@ Example:
 
   (any-fn ...)                 ; function can be used normally
 
-  In this example you can see how to compose the checkings. Note, that the
+  In this example you can see how to compose the verifications. Note, that the
   name of the variables in the checking statements doesn't matter (as long
   as they are different within one statement). Only the position is important.
   Further note, that there is currently no logical check, if the composed
@@ -39,7 +39,7 @@ Example:
 
 ## Notes
 
-Please note, that this code may have not been revised by other people. I
+Please note, that this code may not been revised by other people. I
 would be happy if you send me comments or bug reports. 
 
 
@@ -50,6 +50,6 @@ psytech (psytech@psycho-technique.net)
 
 ## License
 
-Copyright (C) 2011 FIXME
+Copyright (C) 2011 psytech
 
 Distributed under the Eclipse Public License, the same as Clojure.
