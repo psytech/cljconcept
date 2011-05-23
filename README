@@ -1,10 +1,52 @@
 # cljconcept
 
-FIXME: write description
+Implementation of a concept checking facility for generic programming in 
+Clojure. The aim of this small library is the verification, if given 
+function arguments satisfy several protocols. Concepts are a kind of
+convention on the behaviour of objects. In Clojure this can be implemented
+nicely by the use of protocols, which act as a kind of interface.
+
+It is possible to ceck inside of user functions for the correct 
+implementation of the protocols. But this can be tedious and in case of
+recursive functions even impossible if the check should not performed in 
+every recursive call. One way to avoid this is to wrap the user functions 
+and put all the boilerplate code in the wrapper function.
+This is done here and even for recursively defined functions the check
+is only done at the very first call.
+
 
 ## Usage
 
-FIXME: write
+To add concept checking to a function just use the with-concept macro.
+
+Example:
+
+  (with-concepts
+    [[x y] P Q]                ; x and y must satisfy P and Q   
+    [[_ b] Q]                  ; b (corresponds to y) must satisfy Q
+    [[a _] P]                  ; ...
+    (defn any-fn [x y] ...))
+
+  (any-fn ...)                 ; function can be used normally
+
+  In this example you can see how to compose the checkings. Note, that the
+  name of the variables in the checking statements doesn't matter (as long
+  as they are different within one statement). Only the position is important.
+  Further note, that there is currently no logical check, if the composed
+  statements make sense or are redundant. This feature may be implemented in 
+  future versions.
+
+
+## Notes
+
+Please note, that this code may have not been revised by other people. I
+would be happy if you send me comments or bug reports. 
+
+
+## Author
+
+psytech (psytech@psycho-technique.net)
+
 
 ## License
 
